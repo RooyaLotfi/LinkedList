@@ -15,6 +15,10 @@ public class Main {
         System.out.println("my new list is :");
         System.out.println(myList);
         System.out.println("head of this list is " + myList.head.data);
+        myList.insertFront(new Node(500));
+        System.out.println("my new list is :");
+        System.out.println(myList);
+        System.out.println("head of this list is " + myList.head.data);
     }
 }
 
@@ -46,6 +50,16 @@ class LinkedList{
             }
             currentNode.next = newNode;
             newNode.next = null;
+        }
+    }
+
+    public void insertFront(Node newNode){
+        if(this.head == null){
+            this.head = newNode;
+            head.next = null;
+        }else{
+            newNode.next = head;
+            head = newNode;
         }
     }
 
