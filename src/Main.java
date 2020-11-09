@@ -7,12 +7,14 @@ public class Main {
         Node third = new Node(35);
         Node fourth = new Node(40);
         LinkedList myList = new LinkedList();
-        myList.insert(first);
-        myList.insert(second);
-        myList.insert(third);
-        myList.insert(fourth);
+        myList.insertEnd(first);
+        myList.insertEnd(second);
+        myList.insertEnd(third);
+        myList.insertEnd(fourth);
+        myList.insertEnd(new Node(400));
         System.out.println("my new list is :");
         System.out.println(myList);
+        System.out.println("head of this list is " + myList.head.data);
     }
 }
 
@@ -28,7 +30,11 @@ class Node{
 class LinkedList{
     Node head;
 
-    public void insert(Node newNode){
+    LinkedList(){
+        this.head = null;
+    }
+
+    public void insertEnd(Node newNode){
         if(this.head == null) {
             head = newNode;
             newNode.next = null;
@@ -50,7 +56,7 @@ class LinkedList{
             if(currentNode == head)
                 stringList = Integer.toString(currentNode.data);
             else{
-                stringList += ", " + Integer.toString(currentNode.data);
+                stringList += ", " + currentNode.data;
             }
             currentNode = currentNode.next;
         }
