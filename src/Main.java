@@ -12,13 +12,11 @@ public class Main {
         myList.insertEnd(third);
         myList.insertEnd(fourth);
         myList.insertEnd(new Node(400));
-        System.out.println("my new list is :");
-        System.out.println(myList);
-        System.out.println("head of this list is " + myList.head.data);
         myList.insertFront(new Node(500));
+        myList.insertMiddle(new Node(4321),2);
+        myList.insertMiddle(new Node(4321),20);
         System.out.println("my new list is :");
         System.out.println(myList);
-        System.out.println("head of this list is " + myList.head.data);
     }
 }
 
@@ -60,6 +58,20 @@ class LinkedList{
         }else{
             newNode.next = head;
             head = newNode;
+        }
+    }
+
+    public void insertMiddle(Node newNode, int index){
+        Node currentNode = this.head;
+        for(int i = 0; i < index - 1 && currentNode != null ; i++){
+            currentNode = currentNode.next;
+        }
+
+        if(currentNode!=null){
+            newNode.next = currentNode.next;
+            currentNode.next = newNode;
+        } else{
+            System.out.println("index is too big");
         }
     }
 
