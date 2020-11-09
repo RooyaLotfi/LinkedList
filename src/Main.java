@@ -17,6 +17,15 @@ public class Main {
         myList.insertMiddle(new Node(4321),20);
         System.out.println("my new list is :");
         System.out.println(myList);
+        printAnyList(myList.head);
+    }
+
+    public static void printAnyList(Node head){
+        Node curr = head;
+        while(curr != null){
+            System.out.println(curr.data+", ");
+            curr = curr.next;
+        }
     }
 }
 
