@@ -15,9 +15,19 @@ public class Main {
         myList.insertFront(new Node(500));
         myList.insertMiddle(new Node(4321),2);
         myList.insertMiddle(new Node(4321),20);
+
+        System.out.println("my new list is :");
+        System.out.println(myList);
+        myList.deleteIndex(6);
+        System.out.println("my new list is :");
+        System.out.println(myList);
+        myList.deleteIndex(0);
         System.out.println("my new list is :");
         System.out.println(myList);
         printAnyList(myList.head);
+        System.out.println("Reversing the list:");
+        myList.reverse();
+        System.out.println(myList);
     }
 
     public static void printAnyList(Node head){
@@ -82,6 +92,37 @@ class LinkedList{
         } else{
             System.out.println("index is too big");
         }
+    }
+
+    public void deleteIndex(int index){
+        Node currentNode = this.head;
+        int i =0;
+        if(index == 0){
+            head = currentNode.next;
+            return;
+        }
+        while (currentNode != null && i < index - 1) {
+            currentNode = currentNode.next;
+            i++;
+        }
+        if (currentNode != null) {
+            currentNode.next = currentNode.next.next;
+        } else {
+            System.out.println("index bigger than list size");
+        }
+    }
+
+    public void reverse(){
+        Node currentNode = this.head;
+        Node previousNode = null;
+        Node temp;
+        while(currentNode != null){
+            temp = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = temp;
+        }
+        head = previousNode;
     }
 
     public String toString(){
