@@ -18,7 +18,10 @@ public class Main {
 
         System.out.println("my new list is :");
         System.out.println(myList);
-        myList.deteleMiddle(6);
+        myList.deleteIndex(6);
+        System.out.println("my new list is :");
+        System.out.println(myList);
+        myList.deleteIndex(0);
         System.out.println("my new list is :");
         System.out.println(myList);
         printAnyList(myList.head);
@@ -88,19 +91,25 @@ class LinkedList{
         }
     }
 
-    public void deteleMiddle(int index){
+    public void deleteIndex(int index){
         Node currentNode = this.head;
         int i =0;
-        while(currentNode!= null && i < index-1){
-            currentNode = currentNode.next;
-            i++;
+        if(index == 0){
+            head = currentNode.next;
         }
-        if(currentNode!=null){
-            currentNode.next = currentNode.next.next;
+        else {
+            while (currentNode != null && i < index - 1) {
+                currentNode = currentNode.next;
+                i++;
+            }
+            if (currentNode != null) {
+                currentNode.next = currentNode.next.next;
+            } else {
+                System.out.println("index bigger than list size");
+            }
         }
-        else{
-            System.out.println("index bigger than list size");
-        }
+        currentNode = null;
+        System.gc();
     }
 
     public String toString(){
