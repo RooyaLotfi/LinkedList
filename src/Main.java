@@ -96,20 +96,17 @@ class LinkedList{
         int i =0;
         if(index == 0){
             head = currentNode.next;
+            return;
         }
-        else {
-            while (currentNode != null && i < index - 1) {
-                currentNode = currentNode.next;
-                i++;
-            }
-            if (currentNode != null) {
-                currentNode.next = currentNode.next.next;
-            } else {
-                System.out.println("index bigger than list size");
-            }
+        while (currentNode != null && i < index - 1) {
+            currentNode = currentNode.next;
+            i++;
         }
-        currentNode = null;
-        System.gc();
+        if (currentNode != null) {
+            currentNode.next = currentNode.next.next;
+        } else {
+            System.out.println("index bigger than list size");
+        }
     }
 
     public String toString(){
