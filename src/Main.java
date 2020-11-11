@@ -15,6 +15,10 @@ public class Main {
         myList.insertFront(new Node(500));
         myList.insertMiddle(new Node(4321),2);
         myList.insertMiddle(new Node(4321),20);
+
+        System.out.println("my new list is :");
+        System.out.println(myList);
+        myList.deteleMiddle(6);
         System.out.println("my new list is :");
         System.out.println(myList);
         printAnyList(myList.head);
@@ -81,6 +85,21 @@ class LinkedList{
             currentNode.next = newNode;
         } else{
             System.out.println("index is too big");
+        }
+    }
+
+    public void deteleMiddle(int index){
+        Node currentNode = this.head;
+        int i =0;
+        while(currentNode!= null && i < index-1){
+            currentNode = currentNode.next;
+            i++;
+        }
+        if(currentNode!=null){
+            currentNode.next = currentNode.next.next;
+        }
+        else{
+            System.out.println("index bigger than list size");
         }
     }
 
